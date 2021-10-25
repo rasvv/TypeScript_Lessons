@@ -1,9 +1,9 @@
-import { renderBlock } from './lib.js'
+import { renderBlock,  SearchFormData, search} from './lib.js'
 
 export function renderSearchFormBlock (inDate: string, outDate: string) {
-	const nowDate = new Date()
-	const minDate = nowDate.toISOString().slice(0,10)
-	const maxDate = new Date(nowDate.getFullYear(), nowDate.getMonth() + 2, 0).toISOString().slice(0,10)
+  const nowDate = new Date()
+  const minDate = nowDate.toISOString().slice(0,10)
+  const maxDate = new Date(nowDate.getFullYear(), nowDate.getMonth() + 2, 0).toISOString().slice(0,10)
 
   renderBlock(
     'search-form-block',
@@ -42,4 +42,26 @@ export function renderSearchFormBlock (inDate: string, outDate: string) {
     </form>
     `
   )
+  const button = document.getElementsByTagName('button')
+
+
+
+  if (button[0] != null) {
+    const cityInput = (document.getElementById('city') as HTMLInputElement).value
+    const inDateInput = new Date((document.getElementById('check-in-date') as HTMLInputElement).value).toISOString().slice(0,10)
+    const outDateInput =  new Date((document.getElementById('check-out-date') as HTMLInputElement).value).toISOString().slice(0,10)
+    const maxPriceInput = (document.getElementById('max-price') as HTMLInputElement).value
+    console.log(maxPriceInput);
+    button[0].onclick = () => {
+      const searchData: SearchFormData = {
+        city: cityInput,
+        inDate: inDateInput,
+        outDate: outDateInput,
+        maxPrice: +maxPriceInput
+      }
+      console.log(searchData);
+      search(searchData)      
+    }
+
+  }
 }

@@ -24,6 +24,21 @@ export function renderEmptyOrErrorSearchBlock (reasonMessage) {
   )
 }
 
+export function renderCurrentSearchBlock (city, inDate, outDate, maxPrice) {
+  renderBlock(
+    'search-results-block',
+    `
+    <div class="no-results-block">
+      <img src="img/no-results.png" />
+      <p>${city}</p>
+      <p>${inDate}</p>
+      <p>${outDate}</p>
+      <p>${maxPrice}</p>
+    </div>
+    `
+  )
+}
+
 export function renderSearchResultsBlock () {
   renderBlock(
     'search-results-block',

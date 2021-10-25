@@ -11,9 +11,12 @@ const localStorage = {
   'favoritesAmount': 5
 }
 
+
 const nowDate = new Date()
 const inDate = new Date(nowDate.getFullYear(), nowDate.getMonth(), nowDate.getDate() + 2).toISOString().slice(0,10)
+// const inDate = new Date(nowDate.getFullYear(), nowDate.getMonth(), nowDate.getDate() + 2)
 const outDate = new Date(nowDate.getFullYear(), nowDate.getMonth(), nowDate.getDate() + 4).toISOString().slice(0,10)
+// const outDate = new Date(nowDate.getFullYear(), nowDate.getMonth(), nowDate.getDate() + 4)
 
 const getUserData = () => {
   return (localStorage.user)
@@ -28,11 +31,13 @@ const favoritesAmount = () => {
 window.addEventListener('DOMContentLoaded', () => {
   renderUserBlock(username, avatarUrl, favoritesAmount())
   renderSearchFormBlock(inDate, outDate)
-  renderSearchResultsBlock()
-  // renderSearchStubBlock()
-  renderToast(
-    {text: 'Это пример уведомления. Используйте его при необходимости', type: 'success'},
-    {name: 'Понял', handler: () => {console.log('Уведомление закрыто')}}
-  )
+  // renderSearchResultsBlock()
+  renderSearchStubBlock()
+  // renderToast(
+  //   {text: 'Это пример уведомления. Используйте его при необходимости', type: 'success'},
+  //   {name: 'Понял', handler: () => {console.log('Уведомление закрыто')}}
+  // )
+  console.log('запуск')
+  
 })
 
