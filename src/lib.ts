@@ -1,0 +1,49 @@
+// import { renderCurrentSearchBlock } from './search-results.js'
+
+
+export function renderBlock (elementId, html) {
+  const element = document.getElementById(elementId)
+  element.innerHTML = html
+}
+
+export const renderToast = (message, action) => {
+  let messageText = ''
+  
+  if (message != null) {
+    messageText = `
+      <div id="info-block" class="info-block ${message.type}">
+        <p>${message.text}</p>
+        <button id="toast-main-action">${action?.name || 'Закрыть'}</button>
+      </div>
+    `
+  }
+  
+  renderBlock(
+    'toast-block',
+    messageText
+  )
+
+  const button = document.getElementById('toast-main-action')
+  if (button != null) {
+    button.onclick = function() {
+      if (action != null && action.handler != null) {
+        action.handler()
+      }
+      renderToast(null, action)
+    }
+  }
+}
+
+export interface SearchFormData {
+  city: string,
+  inDate: string,
+  outDate: string,
+  maxPrice: number
+} 
+
+export const search = ({city, inDate, outDate, maxPrice}) => {
+  renderToast(
+    {text: `${city}, ${inDate}, ${outDate}, ${maxPrice}`, type: 'success'},
+    {name: 'Ясно', handler: () => {console.log('Уведомление закрыто')}}
+  )
+}
