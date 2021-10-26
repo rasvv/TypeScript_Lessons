@@ -1,4 +1,4 @@
-import { renderCurrentSearchBlock } from './search-results.js'
+// import { renderCurrentSearchBlock } from './search-results.js'
 
 
 export function renderBlock (elementId, html) {
