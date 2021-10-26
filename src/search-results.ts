@@ -24,16 +24,16 @@ export function renderEmptyOrErrorSearchBlock (reasonMessage) {
   )
 }
 
-export function renderCurrentSearchBlock (city, inDate, outDate, maxPrice) {
+export function renderCurrentSearchBlock (city: string, inDate: string, outDate: string, maxPrice: number) {
   renderBlock(
     'search-results-block',
     `
     <div class="no-results-block">
       <img src="img/no-results.png" />
-      <p>${city}</p>
-      <p>${inDate}</p>
-      <p>${outDate}</p>
-      <p>${maxPrice}</p>
+      <p>Город: ${city}</p>
+      <p>Дата заезда: ${inDate}</p>
+      <p>Дата выезда: ${outDate}</p>
+      <p>Максимальная стоимость номера: ${maxPrice} рублей</p>
     </div>
     `
   )

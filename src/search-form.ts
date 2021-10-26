@@ -4,12 +4,12 @@ export function renderSearchFormBlock (inDate: string, outDate: string) {
   const nowDate = new Date()
   const minDate = nowDate.toISOString().slice(0,10)
   const maxDate = new Date(nowDate.getFullYear(), nowDate.getMonth() + 2, 0).toISOString().slice(0,10)
+  let maxPriceValue = 0
 
   renderBlock(
     'search-form-block',
     `
-    <form>
-      <fieldset class="search-filedset">
+
         <div class="row">
           <div>
             <label for="city">Город</label>
@@ -32,36 +32,34 @@ export function renderSearchFormBlock (inDate: string, outDate: string) {
           </div>
           <div>
             <label for="max-price">Макс. цена суток</label>
-            <input id="max-price" type="text" value="" name="price" class="max-price" />
+            <input id="max-price" type="text" value=${maxPriceValue} name="price" class="max-price" />
           </div>
           <div>
-            <div><button>Найти</button></div>
+            <div><button id="findbutton" >Найти</button></div>
           </div>
         </div>
-      </fieldset>
-    </form>
+
     `
   )
-  const button = document.getElementsByTagName('button')
 
 
+  const findbutton = document.getElementById('findbutton')
 
-  if (button[0] != null) {
+  findbutton.onclick = () => {
     const cityInput = (document.getElementById('city') as HTMLInputElement).value
     const inDateInput = new Date((document.getElementById('check-in-date') as HTMLInputElement).value).toISOString().slice(0,10)
     const outDateInput =  new Date((document.getElementById('check-out-date') as HTMLInputElement).value).toISOString().slice(0,10)
     const maxPriceInput = (document.getElementById('max-price') as HTMLInputElement).value
-    console.log(maxPriceInput);
-    button[0].onclick = () => {
-      const searchData: SearchFormData = {
-        city: cityInput,
-        inDate: inDateInput,
-        outDate: outDateInput,
-        maxPrice: +maxPriceInput
-      }
-      console.log(searchData);
-      search(searchData)      
+    
+    const searchData: SearchFormData = {
+      city: cityInput,
+      inDate: inDateInput,
+      outDate: outDateInput,
+      maxPrice: +maxPriceInput
     }
-
+    
+    search(searchData)      
   }
+
 }
+

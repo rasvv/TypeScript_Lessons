@@ -1,3 +1,6 @@
+import { renderCurrentSearchBlock } from './search-results.js'
+
+
 export function renderBlock (elementId, html) {
   const element = document.getElementById(elementId)
   element.innerHTML = html
@@ -39,12 +42,8 @@ export interface SearchFormData {
 } 
 
 export const search = ({city, inDate, outDate, maxPrice}) => {
-
-  // console.log(`${city}, ${inDate}, ${outDate}, ${maxPrice}`);
-  // renderToast(`${city}, ${inDate}, ${outDate}, ${maxPrice}`, '')
-  renderCurrentSearchBlock(city, inDate, outDate, maxPrice)
   renderToast(
     {text: `${city}, ${inDate}, ${outDate}, ${maxPrice}`, type: 'success'},
-    {name: 'Ясно', handler: () => {console.log(`${city}, ${inDate}, ${outDate}, ${maxPrice}`)}}
+    {name: 'Ясно', handler: () => {console.log('Уведомление закрыто')}}
   )
 }
