@@ -34,16 +34,3 @@ export const renderToast = (message, action) => {
   }
 }
 
-export interface SearchFormData {
-  city: string,
-  inDate: string,
-  outDate: string,
-  maxPrice: number
-} 
-
-export const search = ({city, inDate, outDate, maxPrice}) => {
-  renderToast(
-    {text: `${city}, ${inDate}, ${outDate}, ${maxPrice}`, type: 'success'},
-    {name: 'Ясно', handler: () => {console.log('Уведомление закрыто')}}
-  )
-}
