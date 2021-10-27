@@ -7,14 +7,9 @@ export interface SearchFormData {
   maxPrice: number;
 } 
 
-export const search = ({city, inDate, outDate, maxPrice}) => {
-  renderToast(
-    {text: `${city}, ${inDate}, ${outDate}, ${maxPrice}`, type: 'success'},
-    {name: 'Ясно', handler: () => {console.log('Уведомление закрыто')}}
-  )
-}
 
-export function renderSearchFormBlock (inDate: string, outDate: string) {
+
+export function renderSearchFormBlock (inDate: string, outDate: string, maxPrice: number) {
   const nowDate = new Date()
   const minDate = nowDate.toISOString().slice(0,10)
   const maxDate = new Date(nowDate.getFullYear(), nowDate.getMonth() + 2, 0).toISOString().slice(0,10)
@@ -47,7 +42,7 @@ export function renderSearchFormBlock (inDate: string, outDate: string) {
           </div>
           <div>
             <label for="max-price">Макс. цена суток</label>
-            <input id="max-price" type="text" value=${maxPriceValue} name="price" class="max-price" />
+            <input id="max-price" type="text" value=${maxPrice} name="price" class="max-price" />
           </div>
           <div>
             <div><button id="findbutton" >Найти</button></div>
@@ -59,8 +54,8 @@ export function renderSearchFormBlock (inDate: string, outDate: string) {
   )
 }
 
-export function getSearchFormData(): SearchFormData {
-  const formData = new FormData(document.querySelector('#search-form'))
+export function getSearchFormData (): SearchFormData {
+  const formData = new FormData(document.querySelector('search-form'))
 
   return {
     city: formData.get('city') as string,
@@ -68,7 +63,17 @@ export function getSearchFormData(): SearchFormData {
     outDate: formData.get('checkout') as string,
     maxPrice: +(formData.get('price') as string)
   }
+
 }
+
+// const search = ({city, inDate, outDate, maxPrice}) => {
+//   renderToast(
+//     {text: `${city}, ${inDate}, ${outDate}, ${maxPrice}`, type: 'success'},
+//     {name: 'Ясно', handler: () => {console.log('Уведомление закрыто')}}
+//   )
+// }
+
+
 
 // const findbutton = document.getElementById('findbutton')
 
