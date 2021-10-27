@@ -54,17 +54,17 @@ export function renderSearchFormBlock (inDate: string, outDate: string, maxPrice
   )
 }
 
-export function getSearchFormData (): SearchFormData {
-  const formData = new FormData(document.querySelector('search-form'))
+// export function getSearchFormData (): SearchFormData {
+//   const formData = new FormData(document.querySelector('search-form'))
 
-  return {
-    city: formData.get('city') as string,
-    inDate: formData.get('checkin') as string,
-    outDate: formData.get('checkout') as string,
-    maxPrice: +(formData.get('price') as string)
-  }
+//   return {
+//     city: formData.get('city') as string,
+//     inDate: formData.get('checkin') as string,
+//     outDate: formData.get('checkout') as string,
+//     maxPrice: +(formData.get('price') as string)
+//   }
 
-}
+// }
 
 // const search = ({city, inDate, outDate, maxPrice}) => {
 //   renderToast(
