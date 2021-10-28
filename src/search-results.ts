@@ -1,4 +1,6 @@
 import { renderBlock } from './lib.js'
+import { localStorage, getUserData, toggleFavorite } from './index.js'
+import { renderUserBlock } from './user.js'
 
 export function renderSearchStubBlock () {
   renderBlock(
@@ -235,10 +237,13 @@ export function renderSearchResultsTemplateBlock (liTemplate) {
     `
   )
   
+
   const favoritesImg = document.getElementsByClassName('favorites')
-  Array.from(favoritesImg).forEach(element => {
+  Array.from(favoritesImg).forEach((element, id) => {
     element.addEventListener('click', () => {
       element.classList.toggle('active')
+      toggleFavorite(element, id)
+      renderUserBlock(getUserData().username, getUserData().avatarUrl, localStorage.favoritesAmount)
     })
   })
 }
