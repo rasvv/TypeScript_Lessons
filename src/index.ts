@@ -29,7 +29,6 @@ export const localStorage = {
 }
 
 export const toggleFavorite = (element, id) => {
-  console.log(id);
   
   if (element.classList[1] === 'active') {
     ++localStorage.favoritesAmount
@@ -38,8 +37,6 @@ export const toggleFavorite = (element, id) => {
     --localStorage.favoritesAmount
     places[id].favorite = ''
   }    
-  console.log(places[id].favorite);
-  
 }
 
 export const getUserData = () => {
@@ -84,8 +81,6 @@ const buildLiTemplate = (place: resultPlaces) => {
   </li>
   `
 }
-
-console.log(places);
 
 places.forEach((place:resultPlaces) => {
   liTemplate +=buildLiTemplate(place)
