@@ -1,5 +1,5 @@
 import { renderBlock } from './lib.js'
-import { localStorage, getUserData, toggleFavorite } from './index.js'
+import { localStorage, getUserData, toggleFavorite } from './runner.js'
 import { renderUserBlock } from './user.js'
 
 export function renderSearchStubBlock () {
