@@ -236,7 +236,6 @@ export function renderSearchResultsTemplateBlock (liTemplate) {
     </ul>
     `
   )
-  
 
   const favoritesImg = document.getElementsByClassName('favorites')
   Array.from(favoritesImg).forEach((element, id) => {
@@ -247,28 +246,3 @@ export function renderSearchResultsTemplateBlock (liTemplate) {
     })
   })
 }
-
-
-// const liBlock = `
-// <li class="result">
-// <div class="result-container">
-// 	<div class="result-img-container">
-// 		<div class="favorites"></div>
-// 		<img class="result-img" src=${image} alt="">
-// 	</div>	
-// 	<div class="result-info">
-// 		<div class="result-info--header">
-// 			<p>${name}</p>
-// 			<p class="price">${price}&#8381;</p>
-// 		</div>
-// 		<div class="result-info--map"><i class="map-icon"></i> ${remoteness}км от вас</div>
-// 		<div class="result-info--descr">${description}</div>
-// 		<div class="result-info--footer">
-// 			<div>
-// 				<button>Забронировать</button>
-// 			</div>
-// 		</div>
-// 	</div>
-// </div>
-// </li>
-// `

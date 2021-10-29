@@ -52,51 +52,8 @@ export function renderSearchFormBlock (inDate: string, outDate: string, maxPrice
     </form>
     `
   )
-
-  // formData = new FormData(document.querySelector('search-form'))
-  // formData = new FormData([form])
-
 }
 
-// export function getSearchFormData (): SearchFormData {
-//   const formData = new FormData([form])
- 
-//   return {
-//     city: formData.get('city') as string,
-//     inDate: formData.get('checkin') as string,
-//     outDate: formData.get('checkout') as string,
-//     maxPrice: +(formData.get('price') as string)
-//   }
-
-// }
-
-
-// const search = ({city, inDate, outDate, maxPrice}) => {
-//   renderToast(
-//     {text: `${city}, ${inDate}, ${outDate}, ${maxPrice}`, type: 'success'},
-//     {name: 'Ясно', handler: () => {console.log('Уведомление закрыто')}}
-//   )
-// }
-
-
-
-// const findbutton = document.getElementById('findbutton')
-
-// findbutton.onclick = () => {
-//   const cityInput = (document.getElementById('city') as HTMLInputElement).value
-//   const inDateInput = new Date((document.getElementById('check-in-date') as HTMLInputElement).value).toISOString().slice(0,10)
-//   const outDateInput =  new Date((document.getElementById('check-out-date') as HTMLInputElement).value).toISOString().slice(0,10)
-//   const maxPriceInput = (document.getElementById('max-price') as HTMLInputElement).value
-  
-//   const searchData: SearchFormData = {
-//     city: cityInput,
-//     inDate: inDateInput,
-//     outDate: outDateInput,
-//     maxPrice: +maxPriceInput
-//   }
-  
-//   search(searchData)      
-// }
 
 
 

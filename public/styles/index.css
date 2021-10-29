@@ -167,8 +167,9 @@ ul.results-list {
 }
 .result-img {
     width: 245px;
-    height: auto;
+    height: 245px;
     margin-right: 16px;
+		object-fit: contain;
 }
 .favorites {
     width: 20px;
