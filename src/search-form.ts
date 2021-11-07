@@ -8,8 +8,8 @@ export interface SearchFormData {
 } 
 
 
-let formData
-export function renderSearchFormBlock (inDate: string, outDate: string, maxPrice: number) {
+// let formData
+export function renderSearchFormBlock (inDate: Date, outDate: Date, maxPrice: number) {
   const nowDate = new Date()
   const minDate = nowDate.toISOString().slice(0,10)
   const maxDate = new Date(nowDate.getFullYear(), nowDate.getMonth() + 2, 0).toISOString().slice(0,10)
@@ -18,7 +18,7 @@ export function renderSearchFormBlock (inDate: string, outDate: string, maxPrice
   renderBlock(
     'search-form-block',
     `
-    <form name="search-form">
+    <form id="search-form">
       <fieldset class="search-filedset">
         <div class="row">
           <div>
@@ -52,8 +52,27 @@ export function renderSearchFormBlock (inDate: string, outDate: string, maxPrice
     </form>
     `
   )
+	const searchForm = document.querySelector("#search-form")
+
+	function onFormValue(cb) {
+	const listener = (evt) => {
+		evt.preventDefault()
+		const formData = new FormData(searchForm as HTMLFormElement)
+		// const formData = new FormData()
+		cb({
+			city: formData.get('city'),
+			inDate: formData.get('checkin'),
+			outDate: formData.get('checkout'),
+			maxPrice: +formData.get('price')
+		})
+	}
+
+		searchForm.addEventListener('submit', listener)
+
+		return () => searchForm.removeEventListener('submit', listener)
+	}
+
+	onFormValue(console.log)
 }
-
-
 
 
