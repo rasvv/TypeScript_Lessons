@@ -1,4 +1,5 @@
 import { checkDate } from './dates.js'
+import { FlatRentPlace } from  'flat-rent-sdk'
 
 
 let liTemplate: any = ``
@@ -28,7 +29,7 @@ let places = []
 
 
 
-export const toggleFavorite = (element, id) => {
+export const toggleFavorite = (element: any, id: number) => {
   
   if (element.classList[1] === 'active') {
     ++localStorage.favoritesAmount
@@ -42,7 +43,7 @@ export const toggleFavorite = (element, id) => {
 
 export const getPlaces = () => {
 	const searchString = new URLSearchParams(window.location.search)
-	const place: Place {
+	const place: Place = {
 		city = searchString.get('city') || 'Санкт_Петербург',
 		inDate = checkDate(searchString.get('checkin'), 2),
 		outDate = checkDate(searchString.get('checkout'), 4),

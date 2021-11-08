@@ -1,4 +1,4 @@
-import { Place } from 'flat-rent-sdk'
+import { FlatRentPlace } from 'flat-rent-sdk'
 import { renderBlock } from './lib.js'
 import { localStorage, getUserData, toggleFavorite } from './index.js'
 import { renderUserBlock } from './user.js'
@@ -217,7 +217,7 @@ export function renderSearchResultsJSONBlock () {
   })
 }
 
-export function renderSearchResultsBlock (liTemplate: any): void {
+export function renderSearchResultsTemplateBlock (liTemplate: any): void {
   renderBlock(
     'search-results-block',
     `
@@ -248,9 +248,9 @@ export function renderSearchResultsBlock (liTemplate: any): void {
   })
 }
 
-export function renderSearchSDKResultsBlock (places: Place[]) {
+export function renderSearchSDKResultsBlock (places: FlatRentPlace[]) {
   let resultList: string = ''
-  const favoriteItems: favoriteItem[] = JSON.parse(localStorage.getItem('favoriteItems'))
+  // const favoriteItems: favoriteItem[] = JSON.parse(localStorage.getItem('favoriteItems'))
   
   places.forEach(place => {
     // let photosHtml = ''
@@ -260,7 +260,6 @@ export function renderSearchSDKResultsBlock (places: Place[]) {
     resultList += `<li class="result">
     <div class="result-container">
       <div class="result-img-container">
-        <div id=${place.id} class="favorites ${Boolean(favoriteItems.find(item => item.id == place.id)) ? 'active' : ''}"></div>
         <img class="result-img" src="${place.photos[0]}" alt="">
       </div>	
       <div class="result-info">

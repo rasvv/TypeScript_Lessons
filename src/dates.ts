@@ -9,7 +9,7 @@ export const nowDate = new Date()
 //   outDate = new Date(nowDate.getFullYear(), nowDate.getMonth(), nowDate.getDate() + 4).toISOString().slice(0,10)
 // } 
 
-export const checkDate = (date: string,  period: number) => {
+export const checkDate = (date: Date,  period: number) => {
 	if (!date) {
 		return new Date(nowDate.getFullYear(), nowDate.getMonth(), nowDate.getDate() + period).toISOString().slice(0,10)
 	}
