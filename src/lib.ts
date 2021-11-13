@@ -1,5 +1,5 @@
 import { checkDate } from './dates.js'
-import { FlatRentSdk } from './flat-rent-sdk.js'
+// import { FlatRentSdk } from './flat-rent-sdk.js'
 import { FlatRentPlace } from 'flat-rent-sdk'
 
 interface Action {
@@ -109,10 +109,14 @@ export function getUserData() {
   return user
 
 }
-export function getFavoritesAmount(): number {
+// export function getFavoritesAmount(): number {
   
-  const favoritesAmount = JSON.parse(localStorage.getItem('favoriteItems'))
+//   const favoritesAmount = JSON.parse(localStorage.getItem('favoriteItems'))
 
-  return Object.keys(favoritesAmount).length
+//   return Object.keys(favoritesAmount).length
   
+// }
+
+export const getFavoritesAmount = () => {
+	return +window.localStorage.getItem('favoritesAmount')
 }

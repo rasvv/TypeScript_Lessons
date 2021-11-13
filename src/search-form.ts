@@ -34,11 +34,11 @@ export function renderSearchFormBlock (inDate: Date, outDate: Date, maxPrice: nu
         <div class="row">
           <div>
             <label for="check-in-date">Дата заезда</label>
-            <input id="check-in-date" type="date" value=${inDate} min=${minDate} max=${maxDate} name="checkin" />
+            <input id="check-in-date" type="date" value=${inDate.toISOString().slice(0,10)} min=${minDate} max=${maxDate} name="checkin" />
           </div>
           <div>
             <label for="check-out-date">Дата выезда</label>
-            <input id="check-out-date" type="date" value=${outDate} min=${minDate} max=${maxDate} name="checkout" />
+            <input id="check-out-date" type="date" value=${outDate.toISOString().slice(0,10)} min=${minDate} max=${maxDate} name="checkout" />
           </div>
           <div>
             <label for="max-price">Макс. цена суток</label>
@@ -52,27 +52,27 @@ export function renderSearchFormBlock (inDate: Date, outDate: Date, maxPrice: nu
     </form>
     `
   )
-	const searchForm = document.querySelector("#search-form")
+	// const searchForm = document.querySelector("#search-form")
 
-	function onFormValue(cb) {
-	const listener = (evt) => {
-		evt.preventDefault()
-		const formData = new FormData(searchForm as HTMLFormElement)
-		// const formData = new FormData()
-		cb({
-			city: formData.get('city'),
-			inDate: formData.get('checkin'),
-			outDate: formData.get('checkout'),
-			maxPrice: +formData.get('price')
-		})
-	}
+	// function onFormValue(cb) {
+	// const listener = (evt) => {
+	// 	evt.preventDefault()
+	// 	const formData = new FormData(searchForm as HTMLFormElement)
+	// 	// const formData = new FormData()
+	// 	cb({
+	// 		city: formData.get('city'),
+	// 		inDate: formData.get('checkin'),
+	// 		outDate: formData.get('checkout'),
+	// 		maxPrice: +formData.get('price')
+	// 	})
+	// }
 
-		searchForm.addEventListener('submit', listener)
+	// 	searchForm.addEventListener('submit', listener)
 
-		return () => searchForm.removeEventListener('submit', listener)
-	}
+	// 	return () => searchForm.removeEventListener('submit', listener)
+	// }
 
-	onFormValue(console.log)
+	// onFormValue(console.log)
 }
 
 

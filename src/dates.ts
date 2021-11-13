@@ -9,9 +9,15 @@ export const nowDate = new Date()
 //   outDate = new Date(nowDate.getFullYear(), nowDate.getMonth(), nowDate.getDate() + 4).toISOString().slice(0,10)
 // } 
 
-export const checkDate = (date: Date,  period: number) => {
+export const checkDate = (date: string,  period: number): Date => {
+	
 	if (!date) {
-		return new Date(nowDate.getFullYear(), nowDate.getMonth(), nowDate.getDate() + period).toISOString().slice(0,10)
+		// console.log(new Date(nowDate.getFullYear(), nowDate.getMonth(), nowDate.getDate() + period));
+		
+		return new Date(nowDate.getFullYear(), nowDate.getMonth(), nowDate.getDate() + period)
 	}
-	return date
+	// console.log(`Old ${new Date(date)}`);
+	
+	return new Date(date)
 }
+// .toISOString().slice(0,10)

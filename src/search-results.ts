@@ -1,7 +1,7 @@
 import { FlatRentPlace } from 'flat-rent-sdk'
-import { renderBlock } from './lib.js'
-import { localStorage, getUserData, toggleFavorite } from './index.js'
-import { renderUserBlock } from './user.js'
+import { renderBlock, getFavoritesAmount } from './lib.js'
+import { toggleFavorite } from './findplaces.js'
+import { renderUserBlock, getUserData } from './user.js'
 
 export function renderSearchStubBlock () {
   renderBlock(
@@ -209,12 +209,12 @@ export function renderSearchResultsJSONBlock () {
     `
   )
 
-  const favoritesImg = document.getElementsByClassName('favorites')
-  Array.from(favoritesImg).forEach(element => {
-    element.addEventListener('click', () => {
-      element.classList.toggle('active')
-    })
-  })
+  // const favoritesImg = document.getElementsByClassName('favorites')
+  // Array.from(favoritesImg).forEach(element => {
+  //   element.addEventListener('click', () => {
+  //     element.classList.toggle('active')
+  //   })
+  // })
 }
 
 export function renderSearchResultsTemplateBlock (liTemplate: any): void {
@@ -243,14 +243,13 @@ export function renderSearchResultsTemplateBlock (liTemplate: any): void {
     element.addEventListener('click', () => {
       element.classList.toggle('active')
       toggleFavorite(element, id)
-      renderUserBlock(getUserData().username, getUserData().avatarUrl, localStorage.favoritesAmount)
+      renderUserBlock(getUserData().username, getUserData().avatarUrl, getFavoritesAmount())
     })
   })
 }
 
 export function renderSearchSDKResultsBlock (places: FlatRentPlace[]) {
   let resultList: string = ''
-  // const favoriteItems: favoriteItem[] = JSON.parse(localStorage.getItem('favoriteItems'))
   
   places.forEach(place => {
     // let photosHtml = ''
@@ -298,25 +297,25 @@ export function renderSearchSDKResultsBlock (places: FlatRentPlace[]) {
     `
   )
 
-  const favorites = document.getElementsByClassName("favorites")
-  for(let i = 0; i < favorites.length; i++) {
-    favorites[i].addEventListener('click', (e) => {
-      const current = places.find(place => place.id == e.target.id)
-      const isFavorite = Boolean(favoriteItems.find(item => item.id == current.id))
+  // const favorites = document.getElementsByClassName("favorites")
+  // for(let i = 0; i < favorites.length; i++) {
+  //   favorites[i].addEventListener('click', (e) => {
+  //     const current = places.find(place => place.id == e.target.id)
+  //     const isFavorite = Boolean(favoriteItems.find(item => item.id == current.id))
       
-      if (!isFavorite) {
-        favoriteItems.push({id: current.id, name: current.title, image: current.photos[0]})
-      } else {
-        favoriteItems.splice(favoriteItems.indexOf(favoriteItems.find(item => item.id == e.target.id)), 1)
-      }
+  //     if (!isFavorite) {
+  //       favoriteItems.push({id: current.id, name: current.title, image: current.photos[0]})
+  //     } else {
+  //       favoriteItems.splice(favoriteItems.indexOf(favoriteItems.find(item => item.id == e.target.id)), 1)
+  //     }
       
-      localStorage.removeItem('favoriteItems')
-      localStorage.setItem('favoriteItems', JSON.stringify(favoriteItems))
-      renderSearchResultsBlock(places)
-      const user = getUserData()
-      const quantFavorites = getFavoritesAmount()
-      renderUserBlock(user.userName, user.avatarUrl, quantFavorites)
+  //     localStorage.removeItem('favoriteItems')
+  //     localStorage.setItem('favoriteItems', JSON.stringify(favoriteItems))
+  //     renderSearchResultsBlock(places)
+  //     const user = getUserData()
+  //     const quantFavorites = getFavoritesAmount()
+  //     renderUserBlock(user.userName, user.avatarUrl, quantFavorites)
       
-    })
-  }
+  //   })
+  // }
 }

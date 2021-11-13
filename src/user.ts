@@ -1,21 +1,28 @@
 import { renderBlock } from './lib.js'
 
-export const localStorage = {
-  user: {
-    'username': 'RVV',
-    'avatarUrl': '/img/avatar.png'
-  },
-  'favoritesAmount': 0
-}
+window.localStorage.setItem('username', 'RVV')
+window.localStorage.setItem('avatarUrl', '/img/avatar.png')
+window.localStorage.setItem('favoritesAmount', '0')
+// export const localStorage = {
+//   user: {
+//     'username': 'RVV',
+//     'avatarUrl': '/img/avatar.png'
+//   },
+//   'favoritesAmount': 0
+// }
 
 export const getUserData = () => {
-  return (localStorage.user)
+	const user = {
+		username: window.localStorage.getItem('username'),
+		avatarUrl: window.localStorage.getItem('avatarUrl')
+	}
+  return (user)
 }
 
 
 
 export const favoritesAmount = () => {
-  return (localStorage['favoritesAmount'])
+  return +window.localStorage.getItem('favoritesAmount')
 }
 
 export function renderUserBlock (userName: string, avatar: string, favoriteItemsAmount?: number) {

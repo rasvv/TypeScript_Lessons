@@ -6,7 +6,11 @@
 		"moduleResolution": "node",
     "resolveJsonModule": true,
     "esModuleInterop": true,
-		"allowJs": true 		
+		"allowJs": true,
+		"lib": [
+			"ES2015",
+			"DOM"
+		],		
 	},
 	"include": [
 		"src/**/*"
